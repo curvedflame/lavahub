@@ -7,7 +7,7 @@
 
 
 
-
+--outdated full source of the script in my other repo
 --execute every time you die i just got this from the old code that was made like a year ago not verified to work but it should 
 local player = game.Players.LocalPlayer
 local character = player.Character or player.CharacterAdded:Wait()
