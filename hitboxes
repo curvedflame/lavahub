@@ -1,0 +1,57 @@
+--[[
+  ImperiumHub snippet by curvedflame (https://github.com/curvedflame)
+  Licensed under GPL-3.0
+  Redistribution without proper credit is prohibited.
+  DMCA will be enforced against skids. (credit me and i wont)
+]]
+
+
+
+
+--execute every time you die i just got this from the old code that was made like a year ago not verified to work but it should 
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local team = character.Parent:GetChildren() 
+
+local weaponSizes = {
+    Sword = Vector3.new(7, 1.5, 1.5),
+    Spear = Vector3.new(25, 1.5, 1.5),
+    Javelin = Vector3.new(10, 1.5, 1.5),
+    Longsword = Vector3.new(7, 2, 2),
+    Polearm = Vector3.new(20, 1.5, 1.5)
+}
+
+
+local function adjustWeaponSize(weapon, weaponType)
+    local newSize = weaponSizes[weaponType]
+    if newSize then
+        if weaponType == "Polearm" and weapon.Name == "Sapper Axe" then
+            weapon.Blade.Size = Vector3.new(10, 2, 2)
+        else
+            weapon.Blade.Size = newSize
+        end
+    end
+end
+
+
+for _, item in ipairs(character:GetChildren()) do
+    if item:IsA("Model") and item:FindFirstChild("Blade") then
+        local weaponType = item:GetAttribute("WeaponType")
+        if weaponType and weaponSizes[weaponType] then
+            adjustWeaponSize(item, weaponType)
+            item:SetAttribute("Reach", 100)  
+        end
+    end
+end
+
+
+for _, teammate in ipairs(team) do
+    if teammate ~= character then
+        local colliders = teammate:GetChildren()
+        for _, collider in ipairs(colliders) do
+            if collider.Name == "PlayerCollider" then
+                collider:Destroy()
+            end
+        end
+    end
+end
