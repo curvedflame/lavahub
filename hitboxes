@@ -6,14 +6,14 @@
 ]]
 
 
-
---outdated full source of the script in my other repo
---execute every time you die i just got this from the old code that was made like a year ago not verified to work but it should 
+-- you gotta execute this every respawn
+-- you can probably make it work whitout re execution but i dont play the game anymore so i dont really care
+-- enjoy and pls start the repo :)
 local player = game.Players.LocalPlayer
 local character = player.Character or player.CharacterAdded:Wait()
 local team = character.Parent:GetChildren() 
-
-local weaponSizes = {
+-- the weapon shit obviously (i dont think this can be increased anymore)
+local weaponSizes = { 
     Sword = Vector3.new(7, 1.5, 1.5),
     Spear = Vector3.new(25, 1.5, 1.5),
     Javelin = Vector3.new(10, 1.5, 1.5),
@@ -21,7 +21,7 @@ local weaponSizes = {
     Polearm = Vector3.new(20, 1.5, 1.5)
 }
 
-
+-- this is so obvious also no more explanations cause fuck you
 local function adjustWeaponSize(weapon, weaponType)
     local newSize = weaponSizes[weaponType]
     if newSize then
