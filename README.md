@@ -6,4 +6,4 @@
 ]]
 
 
-basically erm this is just the shit im fine  whit releasing publicly (i was fine whit whole script but mat would kill me)
+basically erm this is just the shit im fine  whit releasing publicly full script now ig
